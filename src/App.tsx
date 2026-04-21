@@ -1,7 +1,5 @@
-import React, { useState, useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import { TierProvider, useTier } from "./context/TierContext";
-import { TopNav } from "./components/TopNav";
-import { IconRail } from "./components/IconRail";
 import { HomeDashboard } from "./components/HomeDashboard";
 import { SectionView } from "./components/SectionView";
 import { UpgradePage } from "./components/UpgradePage";
@@ -13,35 +11,25 @@ type View =
 
 function AppContent() {
   const [currentView, setCurrentView] = useState<View>({ kind: "home" });
-  const [isRailOpen, setIsRailOpen] = useState(false);
   const { isSectionAccessible } = useTier();
-
-  const navigateHome = useCallback(() => {
-    setCurrentView({ kind: "home" });
-  }, []);
 
   const navigateToSection = useCallback(
     (sectionId: string) => {
+      if (sectionId === "home") {
+        setCurrentView({ kind: "home" });
+        return;
+      }
       if (isSectionAccessible(sectionId)) {
         setCurrentView({ kind: "section", sectionId });
       } else {
         setCurrentView({ kind: "upgrade", sectionId });
       }
-      setIsRailOpen(false);
     },
     [isSectionAccessible]
   );
 
-  const navigateToUpgrade = useCallback((sectionId: string) => {
-    setCurrentView({ kind: "upgrade", sectionId });
-  }, []);
-
-  const toggleRail = useCallback(() => {
-    setIsRailOpen((prev) => !prev);
-  }, []);
-
-  const closeRail = useCallback(() => {
-    setIsRailOpen(false);
+  const navigateHome = useCallback(() => {
+    setCurrentView({ kind: "home" });
   }, []);
 
   const activeSectionId =
@@ -50,27 +38,9 @@ function AppContent() {
       : "home";
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <TopNav
-        onAppSpaceClick={toggleRail}
-        onHomeClick={navigateHome}
-        isRailOpen={isRailOpen}
-      />
-
-      <IconRail
-        isOpen={isRailOpen}
-        onClose={closeRail}
-        onSectionClick={navigateToSection}
-        activeSectionId={activeSectionId}
-      />
-
-      <main className="pt-14">
-        {currentView.kind === "home" && (
-          <HomeDashboard
-            onSectionClick={navigateToSection}
-            onUpgradeClick={navigateToUpgrade}
-          />
-        )}
+    <div className="h-screen overflow-hidden bg-[#f5f4fb]">
+      <main className="h-full overflow-y-auto">
+        {currentView.kind === "home" && <HomeDashboard />}
 
         {currentView.kind === "section" && (
           <SectionView
