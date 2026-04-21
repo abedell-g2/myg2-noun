@@ -30,6 +30,7 @@ const SHORTCUT_CARDS = [
   {
     title: "Get your first reviews",
     description: "Run a Review Contest — set a gift card incentive and share a link.",
+    cta: "Start a Review Contest",
     icon: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
         <polygon
@@ -46,6 +47,7 @@ const SHORTCUT_CARDS = [
   {
     title: "Complete your profile",
     description: "Add your logo, product description, and screenshots.",
+    cta: "Go to your profile",
     icon: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5746b2" strokeWidth="1.75" strokeLinecap="round">
         <rect x="3" y="3" width="18" height="18" rx="2" />
@@ -58,6 +60,7 @@ const SHORTCUT_CARDS = [
   {
     title: "See buyer intent data",
     description: "Find out which accounts are actively researching your category right now.",
+    cta: "View intent signals",
     icon: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
         <path
@@ -141,12 +144,21 @@ export function HomeDashboard() {
                 <span style={{ fontSize: 15, fontWeight: 600, color: "#201f23", lineHeight: 1.4, display: "block" }}>{card.title}</span>
                 <span style={{ fontSize: 13, color: "#6f6d78", lineHeight: 1.5, marginTop: 6, display: "block" }}>{card.description}</span>
               </div>
-              <span
-                className="mt-4 flex items-center justify-center rounded-lg flex-shrink-0"
-                style={{ width: 36, height: 36, background: card.iconBg }}
-              >
-                {card.icon}
-              </span>
+              <div className="flex items-center justify-between mt-4">
+                <span className="flex items-center gap-1" style={{ fontSize: 13, fontWeight: 600, color: "#5746b2" }}>
+                  {card.cta}
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#5746b2" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
+                  </svg>
+                </span>
+                <span
+                  className="flex items-center justify-center rounded-lg flex-shrink-0"
+                  style={{ width: 36, height: 36, background: card.iconBg }}
+                >
+                  {card.icon}
+                </span>
+              </div>
             </button>
           ))}
         </div>
