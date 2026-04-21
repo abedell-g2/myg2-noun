@@ -31,51 +31,16 @@ const SHORTCUT_CARDS = [
     title: "Get your first reviews",
     description: "Run a Review Contest — set a gift card incentive and share a link.",
     cta: "Start a Review Contest",
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-        <polygon
-          points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-          fill="#fbbf24"
-          fillOpacity="0.35"
-          stroke="#fbbf24"
-          strokeWidth="1.5"
-        />
-      </svg>
-    ),
-    iconBg: "#fef9ee",
   },
   {
     title: "Complete your profile",
     description: "Add your logo, product description, and screenshots.",
     cta: "Go to your profile",
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5746b2" strokeWidth="1.75" strokeLinecap="round">
-        <rect x="3" y="3" width="18" height="18" rx="2" />
-        <circle cx="9" cy="9" r="2" />
-        <path d="M3 20l4-4 3 3 4-5 4 6" />
-      </svg>
-    ),
-    iconBg: "#f2f0f9",
   },
   {
     title: "See buyer intent data",
     description: "Find out which accounts are actively researching your category right now.",
     cta: "View intent signals",
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-        <path
-          d="M12 2L4 8.5l2 12h12l2-12z"
-          fill="#6366f1"
-          fillOpacity="0.15"
-          stroke="#6366f1"
-          strokeWidth="1.5"
-          strokeLinejoin="round"
-        />
-        <path d="M4 8.5h16" stroke="#6366f1" strokeWidth="1.5" />
-        <path d="M8 8.5L12 2l4 6.5" stroke="#6366f1" strokeWidth="1.5" strokeLinejoin="round" />
-      </svg>
-    ),
-    iconBg: "#eef2ff",
   },
 ];
 
@@ -144,21 +109,13 @@ export function HomeDashboard() {
                 <span style={{ fontSize: 15, fontWeight: 600, color: "#201f23", lineHeight: 1.4, display: "block" }}>{card.title}</span>
                 <span style={{ fontSize: 13, color: "#6f6d78", lineHeight: 1.5, marginTop: 6, display: "block" }}>{card.description}</span>
               </div>
-              <div className="flex items-center justify-between mt-4">
-                <span className="flex items-center gap-1" style={{ fontSize: 13, fontWeight: 600, color: "#5746b2" }}>
-                  {card.cta}
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#5746b2" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <line x1="5" y1="12" x2="19" y2="12" />
-                    <polyline points="12 5 19 12 12 19" />
-                  </svg>
-                </span>
-                <span
-                  className="flex items-center justify-center rounded-lg flex-shrink-0"
-                  style={{ width: 36, height: 36, background: card.iconBg }}
-                >
-                  {card.icon}
-                </span>
-              </div>
+              <span className="flex items-center gap-1 mt-4" style={{ fontSize: 13, fontWeight: 600, color: "#5746b2" }}>
+                {card.cta}
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#5746b2" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </span>
             </button>
           ))}
         </div>
